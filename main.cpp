@@ -18,7 +18,22 @@ int main()
     {
         for ( int x = 0; x < bmp[0].size(); x++)
         {
-            
+            Pixel rgb = bmp[i][x];
+            if( rgb.red> rgb.green && rgb.red > rgb.blue)
+            {
+                rgb.green = rgb.red;
+                rgb.blue = rgb.red;
+            }
+            else if (rgb.green > rgb.red && rgb.green > rgb.blue)
+            {
+                rgb.red = rgb.green;
+                rgb.blue = rgb.green;
+            }
+            else
+            {
+                rgb.green = rgb.blue;
+                rgb.red = rgb.blue;
+            }
         }
     }
     // setup vector and imput var
