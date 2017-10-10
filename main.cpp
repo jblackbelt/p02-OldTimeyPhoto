@@ -28,6 +28,13 @@ int main()
             bmp[i][x] = black;
         }
     }
+    for ( int i = MAXBORDER; i < bmp.size() - MAXBORDER; i++)
+    {
+        for ( int x = MAXBORDER; x < bmp[i].size() - MAXBORDER; x++)
+        {
+            bmp[i][x] = bmp[i - MAXBORDER][x - MAXBORDER];
+        }
+    }
     for ( int i = 0; i < bmp.size(); i++)
     {
         for ( int x = 0; x < bmp[i].size(); x++)
