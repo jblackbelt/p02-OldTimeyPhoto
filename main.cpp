@@ -15,16 +15,18 @@ int main()
     bmp = image.toPixelMatrix();
     for ( int i = 0; i < bmp.size(); i++)
     {
-        for ( int x = 0; x < bmp[0].size(); x++)
+        for ( int x = 0; x < bmp[i].size(); x++)
         {
             Pixel rgb = bmp[i][x];
-            rgb.red = (bmp[i][x].red + bmp[i][x].green + bmp[i][x].blue)/2;
-            rgb.green = (bmp[i][x].red + bmp[i][x].green + bmp[i][x].blue)/2;
-            rgb.blue = (bmp[i][x].red + bmp[i][x].green + bmp[i][x].blue)/2;
+            rgb.red = (bmp[i][x].red + bmp[i][x].green + bmp[i][x].blue)/3;
+            rgb.green = (bmp[i][x].red + bmp[i][x].green + bmp[i][x].blue)/3;
+            rgb.blue = (bmp[i][x].red + bmp[i][x].green + bmp[i][x].blue)/3;
             bmp[i][x] = rgb;
         }
     }
-    image.save("oldtimey.bmp");
+    Bitmap last;
+    last.fromPixelMatrix(bmp);
+    last.save("oldtimey.bmp");
     // setup vector and imput var
     // ask user for a file to imput 
     // use imput to set up a bitmap
