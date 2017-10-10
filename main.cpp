@@ -4,20 +4,35 @@
 #include <iostream>
 
 using namespace std;
-
+const int MAXBORDER = 15;
 
 int main()
 {
     string pic = "machupicchu.bmp";
     Bitmap image;
-    vector < vector < Pixel > > bmp;
+    vector < vector < Pixel > > bmp1;
     image.open(pic);
-    bmp = image.toPixelMatrix();
+    bmp1 = image.toPixelMatrix();
+    Pixel black;
+    black.red=1;
+    black.green=1;
+    black.blue=1;
+    Pixel rgb;
+    vector < vector < Pixel >  > bmp (bmp1.size() + MAXBORDER*2 , vector < Pixel > ( bmp1[0].size() + MAXBORDER*2));
+    image.fromPixelMatrix(bmp);
+    cout << false << image.isImage() << endl;
     for ( int i = 0; i < bmp.size(); i++)
     {
         for ( int x = 0; x < bmp[i].size(); x++)
         {
-            Pixel rgb = bmp[i][x];
+            bmp[i][x] = black;
+        }
+    }
+    for ( int i = 0; i < bmp.size(); i++)
+    {
+        for ( int x = 0; x < bmp[i].size(); x++)
+        {
+            rgb = bmp[i][x];
             rgb.red = (bmp[i][x].red + bmp[i][x].green + bmp[i][x].blue)/3;
             rgb.green = (bmp[i][x].red + bmp[i][x].green + bmp[i][x].blue)/3;
             rgb.blue = (bmp[i][x].red + bmp[i][x].green + bmp[i][x].blue)/3;
