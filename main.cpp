@@ -19,8 +19,6 @@ int main()
     black.blue=1;
     Pixel rgb;
     vector < vector < Pixel >  > bmp (bmp1.size() + MAXBORDER*2 , vector < Pixel > ( bmp1[0].size() + MAXBORDER*2));
-    image.fromPixelMatrix(bmp);
-    cout << false << image.isImage() << endl;
     for ( int i = 0; i < bmp.size(); i++)
     {
         for ( int x = 0; x < bmp[i].size(); x++)
@@ -32,7 +30,7 @@ int main()
     {
         for ( int x = MAXBORDER; x < bmp[i].size() - MAXBORDER; x++)
         {
-            bmp[i][x] = bmp[i - MAXBORDER][x - MAXBORDER];
+            bmp[i][x] = bmp1[i - MAXBORDER][x - MAXBORDER];
         }
     }
     for ( int i = 0; i < bmp.size(); i++)
