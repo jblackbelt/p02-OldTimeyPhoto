@@ -8,10 +8,26 @@ const int MAXBORDER = 15;
 
 int main()
 {
-    string pic = "machupicchu.bmp";
+    
+    string pic ;
     Bitmap image;
+    for(;;)
+    {
+        cout << "please enter a bmp image." << endl;
+        cin >> pic;
+        Bitmap in;
+        in.open(pic);
+        if(in.isImage())
+        {
+            image = in;
+            break;
+        }
+        else
+        {
+            cout << "Image that was input was a invalid image. Please imput a valid bmp image." << endl;
+        }
+    }
     vector < vector < Pixel > > bmp1;
-    image.open(pic);
     bmp1 = image.toPixelMatrix();
     Pixel black;
     black.red=1;
