@@ -10,7 +10,7 @@ int main()
     int maxBorderr, maxBorderc = 15;
     string pic ;
     Bitmap image;
-    for(;;)
+    do(;;)
     {
         cout << "please enter a bmp image." << endl;
         cin >> pic;
@@ -25,6 +25,7 @@ int main()
         {
             cout << "Image that was input was a invalid image. Please imput a valid bmp image." << endl;
         }
+    while(true);
     }
     vector < vector < Pixel > > bmp1;
     bmp1 = image.toPixelMatrix();
