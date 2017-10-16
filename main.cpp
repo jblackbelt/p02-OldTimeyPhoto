@@ -4,11 +4,10 @@
 #include <iostream>
 
 using namespace std;
-const int MAXBORDER = 15;
 
 int main()
 {
-    
+    int maxBorderr, maxBorderc = 15;
     string pic ;
     Bitmap image;
     for(;;)
@@ -34,7 +33,9 @@ int main()
     black.green=1;
     black.blue=1;
     Pixel rgb;
-    vector < vector < Pixel >  > bmp (bmp1.size() + MAXBORDER*2 , vector < Pixel > ( bmp1[0].size() + MAXBORDER*2));
+    maxBorderr = bmp1.size()/138;
+    maxBorderc = bmp1[0].size()/138;
+    vector < vector < Pixel >  > bmp (bmp1.size() + maxBorderr*2 , vector < Pixel > ( bmp1[0].size() + maxBorderc*2));
     for ( int i = 0; i < bmp.size(); i++)
     {
         for ( int x = 0; x < bmp[i].size(); x++)
@@ -42,11 +43,11 @@ int main()
             bmp[i][x] = black;
         }
     }
-    for ( int i = MAXBORDER; i < bmp.size() - MAXBORDER; i++)
+    for ( int i = maxBorderr; i < bmp.size() - maxBorderr; i++)
     {
-        for ( int x = MAXBORDER; x < bmp[i].size() - MAXBORDER; x++)
+        for ( int x = maxBorderc; x < bmp[i].size() - maxBorderc; x++)
         {
-            bmp[i][x] = bmp1[i - MAXBORDER][x - MAXBORDER];
+            bmp[i][x] = bmp1[i - maxBorderr][x - maxBorderc];
         }
     }
     for ( int i = 0; i < bmp.size(); i++)
